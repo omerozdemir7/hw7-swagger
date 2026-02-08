@@ -1,0 +1,30 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Phonebook API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: >
+    İletişim bilgileri yönetimi için API dokümantasyonu.
+tags:
+  - name: Contacts
+    description: İletişim işlemleri
+  - name: Auth
+    description: Kimlik doğrulama işlemleri
+servers:
+  - url: http://localhost:3000
+    description: Local Server
+  - url: https://example.onrender.com
+    description: Render (production)
+paths:
+  /contacts:
+    $ref: ../swagger/paths/contacts/root.yaml
+  /contacts/{contactId}:
+    $ref: ../swagger/paths/contacts/{contactId}/root.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
